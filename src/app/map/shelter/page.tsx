@@ -14,7 +14,9 @@ export default function About() {
   const { isPending, error, data } = useQuery({
     queryKey: ["shelterData"],
     queryFn: () =>
-      fetch("http://localhost:3000/ANIMAL/shelters").then((res) => res.json()),
+      fetch(`${process.env.NEXT_PUBLIC_API_HOST}/animal/shelters`).then((res) =>
+        res.json()
+      ),
   });
 
   const [shelter, setShelterData] = useState<object | null>(null);
