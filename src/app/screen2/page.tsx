@@ -43,9 +43,9 @@ export default function Screen2() {
           slidesOffsetAfter={20}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
-          speed={500}
+          speed={100}
           autoplay={{
-            delay: 3800,
+            delay: 3900,
             disableOnInteraction: false,
           }}
           loop={false}
