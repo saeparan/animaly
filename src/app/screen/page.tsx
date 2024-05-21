@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useQuery } from "@tanstack/react-query";
+import {useQuery} from "@tanstack/react-query";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import {
@@ -12,15 +12,15 @@ import {
   Grid,
   Paper,
 } from "@mui/material";
-import { Swiper, SwiperSlide } from "swiper/react";
+import {Swiper, SwiperSlide} from "swiper/react";
 import dayjs from "dayjs";
 import "dayjs/locale/ko"; // 한국어 불로 오기
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import {Autoplay, Pagination, Navigation} from "swiper/modules";
 import "swiper/css";
 import SelectAnimalType from "@/components/SelectAnimalType";
 
 export default function Screen2() {
-  const { data } = useQuery({
+  const {data} = useQuery({
     queryKey: ["data"],
     refetchInterval: 60000 + Math.random() * 60000,
     queryFn: () =>
@@ -30,7 +30,7 @@ export default function Screen2() {
   });
 
   return (
-    <Box sx={{ p: 3 }}>
+    <Box sx={{p: 3}}>
       <Box
         sx={{
           flexGrow: 1,
@@ -39,9 +39,9 @@ export default function Screen2() {
           borderRadius: 2,
         }}
       >
-        <Grid sx={{ m: 1 }} container spacing={2}>
+        <Grid sx={{m: 1}} container spacing={2}>
           <Grid xs={4}>
-            <SelectAnimalType />
+            <SelectAnimalType/>
           </Grid>
         </Grid>
       </Box>
@@ -74,13 +74,13 @@ export default function Screen2() {
             data.map((row: any, index: any) => (
               <>
                 <SwiperSlide>
-                  <Card sx={{ boxShadow: 0, maxWidth: 665 }}>
+                  <Card sx={{boxShadow: 0, maxWidth: 665}}>
                     <CardMedia
                       component="img"
                       src={row?.popFile}
-                      sx={{ height: 450 }}
+                      sx={{height: 450}}
                     ></CardMedia>
-                    <CardContent sx={{ minHeight: 380, position: "relative" }}>
+                    <CardContent sx={{minHeight: 380, position: "relative"}}>
                       <Typography
                         gutterBottom
                         variant="h2"
@@ -120,13 +120,13 @@ export default function Screen2() {
                         {dayjs(row.noticeEndDate).format("YYYY-MM-DD")}
                       </Typography>
 
-                      <Divider sx={{ my: 2 }} />
+                      <Divider sx={{my: 2}}/>
 
                       <Typography
                         gutterBottom
                         variant="h4"
                         component="div"
-                        sx={{ fontWeight: 600, textOverflow: "ellipsis" }}
+                        sx={{fontWeight: 600, textOverflow: "ellipsis"}}
                       >
                         {row.sexCd == "F" ? "♀️" : "♂️"}&nbsp;
                         {row.sexCd == "F" ? "여아" : "남아"}&nbsp; 🍼
@@ -135,16 +135,16 @@ export default function Screen2() {
                       <Typography
                         variant="h4"
                         color="text.secondary"
-                        sx={{ minHeight: 150 }}
+                        sx={{minHeight: 150}}
                       >
                         {row.specialText}
                       </Typography>
 
-                      <Divider sx={{ my: 2 }} />
+                      <Divider sx={{my: 2}}/>
                       <Typography
                         variant="h3"
                         color="text.primary"
-                        sx={{ fontWeight: 600 }}
+                        sx={{fontWeight: 600}}
                       >
                         {row.careName}
                       </Typography>
