@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { useSearchParams } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
-import { Card, CardContent, CardMedia, Divider, Paper } from "@mui/material";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import dayjs from "dayjs";
-import "dayjs/locale/ko";
-import "swiper/css";
+import * as React from 'react';
+import { useSearchParams } from 'next/navigation';
+import { useQuery } from '@tanstack/react-query';
+import { Card, CardContent, CardMedia, Divider, Paper } from '@mui/material';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
+import 'swiper/css';
 
 export default function Screen2() {
   const searchParams = useSearchParams();
-  const date = searchParams.get("date") ?? dayjs().format("YYYY-MM-DD");
-  const type = searchParams.get("type") ?? "개";
+  const date = searchParams.get('date') ?? dayjs().format('YYYY-MM-DD');
+  const type = searchParams.get('type') ?? '개';
 
   const { data } = useQuery({
-    queryKey: ["data"],
+    queryKey: ['data'],
     refetchInterval: 60000 + Math.random() * 60000,
     queryFn: () =>
       fetch(
@@ -30,18 +30,18 @@ export default function Screen2() {
     <Box>
       <Box
         sx={{
-          height: "100vh",
+          height: '100vh',
           p: 3,
           // backgroundImage: "url('grass-dog.jpg')",
           // backgroundRepeat: "no-repeat",
-          background: "#f5f5f5",
+          background: '#f5f5f5',
         }}
       >
         <Swiper
           spaceBetween={20}
           slidesPerView={3}
           slidesOffsetAfter={20}
-          onSlideChange={() => console.log("slide change")}
+          onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
           speed={100}
           autoplay={{
@@ -58,18 +58,18 @@ export default function Screen2() {
                 <SwiperSlide>
                   <Card sx={{ boxShadow: 0, maxWidth: 665 }}>
                     <CardMedia
-                      component="img"
+                      component='img'
                       src={row?.popFile}
                       sx={{ height: 450 }}
                     ></CardMedia>
-                    <CardContent sx={{ minHeight: 380, position: "relative" }}>
+                    <CardContent sx={{ minHeight: 380, position: 'relative' }}>
                       <Typography
                         gutterBottom
-                        variant="h2"
-                        component="div"
+                        variant='h2'
+                        component='div'
                         sx={{
                           fontWeight: 600,
-                          textOverflow: "ellipsis",
+                          textOverflow: 'ellipsis',
                           mb: 1,
                         }}
                         noWrap
@@ -79,10 +79,10 @@ export default function Screen2() {
 
                       <Typography
                         gutterBottom
-                        variant="h4"
+                        variant='h4'
                         sx={{
                           fontWeight: 500,
-                          textOverflow: "ellipsis",
+                          textOverflow: 'ellipsis',
                           mb: 1,
                         }}
                       >
@@ -91,32 +91,32 @@ export default function Screen2() {
 
                       <Typography
                         gutterBottom
-                        variant="h4"
+                        variant='h4'
                         sx={{
                           fontWeight: 500,
-                          textOverflow: "ellipsis",
+                          textOverflow: 'ellipsis',
                           mb: 1,
                         }}
                       >
-                        {dayjs(row.noticeStartDate).format("YYYY-MM-DD")}~
-                        {dayjs(row.noticeEndDate).format("YYYY-MM-DD")}
+                        {dayjs(row.noticeStartDate).format('YYYY-MM-DD')}~
+                        {dayjs(row.noticeEndDate).format('YYYY-MM-DD')}
                       </Typography>
 
                       <Divider sx={{ my: 2 }} />
 
                       <Typography
                         gutterBottom
-                        variant="h4"
-                        component="div"
-                        sx={{ fontWeight: 600, textOverflow: "ellipsis" }}
+                        variant='h4'
+                        component='div'
+                        sx={{ fontWeight: 600, textOverflow: 'ellipsis' }}
                       >
-                        {row.sexCd == "F" ? "♀️" : "♂️"}&nbsp;
-                        {row.sexCd == "F" ? "여아" : "남아"}&nbsp; 🍼
-                        {2025 - row?.age + "살 추정"}
+                        {row.sex == 'F' ? '♀️' : '♂️'}&nbsp;
+                        {row.sex == 'F' ? '여아' : '남아'}&nbsp; 🍼
+                        {2025 - row?.age + '살 추정'}
                       </Typography>
                       <Typography
-                        variant="h4"
-                        color="text.secondary"
+                        variant='h4'
+                        color='text.secondary'
                         sx={{ minHeight: 150 }}
                       >
                         {row.specialText}
@@ -124,14 +124,14 @@ export default function Screen2() {
 
                       <Divider sx={{ my: 2 }} />
                       <Typography
-                        variant="h3"
-                        color="text.primary"
+                        variant='h3'
+                        color='text.primary'
                         sx={{ fontWeight: 600 }}
                       >
                         {row.careName}
                       </Typography>
 
-                      <Typography variant="h4">{row.careTel}</Typography>
+                      <Typography variant='h4'>{row.careTel}</Typography>
 
                       {/* <Typography variant="h6" color="text.secondary">
                           {row?.happenDtFormatted} 보호소 입소
